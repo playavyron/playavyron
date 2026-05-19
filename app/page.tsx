@@ -1,46 +1,47 @@
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black flex items-center justify-center">
+    <main className="min-h-screen bg-black text-white overflow-hidden relative">
 
-      {/* Fondo galaxia */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020412] via-black to-[#120224]" />
+      {/* Fondo Glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-black to-fuchsia-900/30" />
 
-      {/* Glow azul */}
-      <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl" />
+      {/* Navbar */}
+      <nav className="relative z-10 flex items-center justify-between px-8 py-6 border-b border-white/10 backdrop-blur-md">
 
-      {/* Glow violeta */}
-      <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-3xl" />
+        <h1 className="text-2xl font-bold tracking-[0.3em] bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-transparent bg-clip-text">
+          AVYRON
+        </h1>
 
-      {/* Estrellas */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(40)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-white rounded-full opacity-70 animate-pulse"
-            style={{
-              width: `${Math.random() * 4}px`,
-              height: `${Math.random() * 4}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+        <div className="flex gap-8 text-sm uppercase tracking-[0.2em] text-zinc-300">
+          <button className="hover:text-cyan-400 transition">
+            Inicio
+          </button>
 
-      {/* Contenido */}
-      <div className="relative z-10 flex flex-col items-center text-center">
+          <button className="hover:text-cyan-400 transition">
+            Juegos
+          </button>
+
+          <button className="hover:text-cyan-400 transition">
+            IA
+          </button>
+
+          <button className="hover:text-cyan-400 transition">
+            Universo
+          </button>
+        </div>
+
+      </nav>
+
+      {/* Hero */}
+      <section className="relative z-10 flex flex-col items-center justify-center text-center pt-32 px-6">
 
         {/* Logo */}
-        <div className="mb-10 relative">
-          <div className="w-32 h-32 rounded-full border border-cyan-400 flex items-center justify-center shadow-[0_0_80px_#00ffff] bg-black/40 backdrop-blur-xl">
-            <span className="text-6xl text-cyan-300 font-light tracking-widest">
-              A
-            </span>
-          </div>
+        <div className="w-36 h-36 rounded-full border border-cyan-400 flex items-center justify-center text-6xl text-cyan-300 shadow-[0_0_60px_rgba(0,255,255,0.6)] mb-10">
+          A
         </div>
 
         {/* Título */}
-        <h1 className="text-8xl md:text-[10rem] font-black tracking-[0.25em] uppercase bg-gradient-to-r from-cyan-400 via-blue-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(0,255,255,0.9)]">
+        <h1 className="text-7xl md:text-9xl font-black tracking-[0.25em] uppercase bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(0,255,255,0.5)]">
           AVYRON
         </h1>
 
@@ -49,12 +50,27 @@ export default function Home() {
           Imagine. Create. Play.
         </p>
 
-        {/* Botón */}
-        <button className="mt-14 px-10 py-5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white text-xl font-bold shadow-[0_0_40px_rgba(0,255,255,0.8)] hover:scale-110 hover:shadow-[0_0_60px_rgba(168,85,247,1)] transition-all duration-500">
-          Enter Universe
-        </button>
+        {/* Descripción */}
+        <p className="mt-10 max-w-2xl text-zinc-400 text-lg leading-8">
+          A futuristic universe where artificial intelligence,
+          gaming and creativity merge into one experience.
+        </p>
 
-      </div>
+        {/* Botones */}
+        <div className="flex gap-6 mt-12">
+
+          <button className="px-10 py-5 rounded-full bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-xl font-bold shadow-[0_0_35px_rgba(0,255,255,0.6)] hover:scale-105 transition">
+            Enter Universe
+          </button>
+
+          <button className="px-10 py-5 rounded-full border border-cyan-400 text-cyan-300 hover:bg-cyan-400/10 transition">
+            Explore Games
+          </button>
+
+        </div>
+
+      </section>
+
     </main>
   );
 }
