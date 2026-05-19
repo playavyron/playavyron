@@ -51,6 +51,7 @@ export default function Home() {
         </p>
 
         {/* Botón */}
+        import Link from "next/link";
         <Link href="/universo">
           <button className="mt-14 px-10 py-5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white text-2xl font-bold shadow-[0_0_35px_rgba(0,255,255,0.8)] hover:scale-110 transition duration-300">
             Enter Universe
