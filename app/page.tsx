@@ -1,31 +1,65 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden relative">
+    <main className="relative min-h-screen overflow-hidden bg-black text-white">
 
-      {/* Fondo Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-black to-fuchsia-900/30" />
+      {/* Fondo galaxia */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-950 via-black to-fuchsia-950" />
+
+      {/* Glow cyan */}
+      <div className="absolute top-[-250px] left-[-250px] w-[600px] h-[600px] rounded-full bg-cyan-500/20 blur-3xl" />
+
+      {/* Glow purple */}
+      <div className="absolute bottom-[-250px] right-[-250px] w-[600px] h-[600px] rounded-full bg-fuchsia-500/20 blur-3xl" />
+
+      {/* Estrellas */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(60)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white opacity-70 animate-pulse"
+            style={{
+              width: `${Math.random() * 4}px`,
+              height: `${Math.random() * 4}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Navbar */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6 border-b border-white/10">
-        
-        <h1 className="text-2xl font-bold tracking-[0.3em] bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
+      <nav className="relative z-20 flex items-center justify-between border-b border-white/10 px-8 py-6 backdrop-blur-md">
+
+        <motion.h1
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-3xl font-black tracking-[0.3em] text-transparent"
+        >
           AVYRON
-        </h1>
+        </motion.h1>
 
-        <div className="flex gap-8 text-sm uppercase tracking-[0.2em] text-zinc-300">
+        <div className="hidden md:flex gap-8 text-sm uppercase tracking-[0.2em] text-zinc-300">
 
-          <button className="hover:text-cyan-400 transition">
+          <button className="transition hover:text-cyan-400">
             Inicio
           </button>
 
-          <button className="hover:text-cyan-400 transition">
+          <button className="transition hover:text-cyan-400">
             Juegos
           </button>
 
-          <button className="hover:text-cyan-400 transition">
+          <button className="transition hover:text-cyan-400">
             IA
+          </button>
+
+          <button className="transition hover:text-cyan-400">
+            Universo
           </button>
 
         </div>
@@ -33,32 +67,135 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative z-10 flex flex-col items-center justify-center text-center pt-32 px-6">
+      <motion.section
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center"
+      >
 
-        {/* Logo */}
-        <div className="w-36 h-36 rounded-full border border-cyan-400 flex items-center justify-center text-7xl text-cyan-300 shadow-[0_0_50px_rgba(0,255,255,0.8)]">
+        {/* Logo animado */}
+        <motion.div
+          animate={{
+            scale: [1, 1.08, 1],
+            rotate: [0, 2, -2, 0],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+          }}
+          className="flex h-40 w-40 items-center justify-center rounded-full border border-cyan-400 bg-black/30 text-8xl text-cyan-300 shadow-[0_0_70px_rgba(0,255,255,0.8)] backdrop-blur-xl"
+        >
           A
-        </div>
+        </motion.div>
 
         {/* Título */}
-        <h1 className="mt-16 text-7xl md:text-9xl font-black tracking-[0.25em] bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(0,255,255,0.6)]">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="mt-16 bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-7xl font-black tracking-[0.25em] text-transparent md:text-9xl"
+        >
           AVYRON
-        </h1>
+        </motion.h1>
 
         {/* Subtítulo */}
-        <p className="mt-8 text-cyan-100 text-xl md:text-2xl tracking-[0.5em] uppercase">
-          Imagina. Crea. Juega.
-        </p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 1 }}
+          className="mt-8 text-xl uppercase tracking-[0.5em] text-cyan-100 md:text-2xl"
+        >
+          Imagine. Create. Play.
+        </motion.p>
 
-        {/* Botón */}
-        import Link from "next/link";
-        <Link href="/universo">
-          <button className="mt-14 px-10 py-5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white text-2xl font-bold shadow-[0_0_35px_rgba(0,255,255,0.8)] hover:scale-110 transition duration-300">
-            Enter Universe
-          </button>
-        </Link>
+        {/* Texto */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="mt-10 max-w-3xl text-lg leading-8 text-zinc-400"
+        >
+          A futuristic universe where artificial intelligence,
+          gaming and creativity merge into one immersive experience
+          for the next generation of creators.
+        </motion.p>
 
-      </section>
+        {/* Botones */}
+        <div className="mt-14 flex flex-col gap-6 md:flex-row">
+
+          <Link href="/universo">
+
+            <motion.button
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0px 0px 40px rgba(0,255,255,0.9)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-fuchsia-500 px-12 py-5 text-2xl font-bold text-white"
+            >
+              Enter Universe
+            </motion.button>
+
+          </Link>
+
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              borderColor: "#22d3ee",
+            }}
+            className="rounded-full border border-white/20 bg-white/5 px-12 py-5 text-xl text-cyan-100 backdrop-blur-md"
+          >
+            Explore Games
+          </motion.button>
+
+        </div>
+
+        {/* Cards */}
+        <div className="mt-28 grid w-full max-w-6xl gap-8 md:grid-cols-3">
+
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+          >
+            <h3 className="text-2xl font-bold text-cyan-300">
+              AI Game Creation
+            </h3>
+
+            <p className="mt-4 text-zinc-400">
+              Kids can create their own games using the power of artificial intelligence.
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+          >
+            <h3 className="text-2xl font-bold text-fuchsia-300">
+              Creative Worlds
+            </h3>
+
+            <p className="mt-4 text-zinc-400">
+              Explore infinite worlds full of imagination, stories and adventures.
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -10 }}
+            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+          >
+            <h3 className="text-2xl font-bold text-blue-300">
+              Learn While Playing
+            </h3>
+
+            <p className="mt-4 text-zinc-400">
+              Fun experiences designed to teach creativity, logic and innovation.
+            </p>
+          </motion.div>
+
+        </div>
+
+      </motion.section>
 
     </main>
   );
