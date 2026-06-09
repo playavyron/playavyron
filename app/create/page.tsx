@@ -52,15 +52,12 @@ export default function CreatePage() {
 
       const data = await res.json();
 
-      if (data.concept) {
-        setGame(data.concept);
-        setImage(data.image || "");
-      } else {
-        setGame(fallbackGame(prompt));
-      }
-    } catch {
-      setGame(fallbackGame(prompt));
-    }
+    if (data.title) {
+  setGame(data);
+  setImage(data.image || "");
+} else {
+  setGame(fallbackGame(prompt));
+}
 
     setLoading(false);
   }
