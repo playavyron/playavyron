@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         {
           role: "system",
           content:
-            "Sos AVYRON, una IA que crea ideas de videojuegos educativos para niños. Respondé siempre en JSON válido, sin markdown.",
+            "Sos AVYRON, una IA que crea conceptos de videojuegos educativos para niños. Respondé siempre en JSON válido, sin markdown, sin texto extra.",
         },
         {
           role: "user",
@@ -30,11 +30,14 @@ Crea un videojuego educativo para niños basado en esta idea:
 
 "${prompt}"
 
-Respondé SOLO con este JSON:
+Respondé SOLO con este JSON exacto:
 
 {
-  "title": "Nombre del juego",
-  "concept": "Resumen corto del juego",
+  "title": "Nombre corto del juego",
+  "genre": "Género del juego",
+  "rarity": "Common | Rare | Epic | Legendary",
+  "difficulty": "Easy | Medium | Hard",
+  "story": "Historia breve del juego",
   "gameplay": "Cómo se juega",
   "powers": "Poderes o habilidades principales",
   "enemies": "Obstáculos o enemigos",
@@ -45,6 +48,7 @@ Respondé SOLO con este JSON:
         },
       ],
       temperature: 0.8,
+      response_format: { type: "json_object" },
     });
 
     const text = completion.choices[0]?.message?.content || "{}";
