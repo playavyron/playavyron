@@ -1,243 +1,248 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
-export default function Universo() {
+const cards = [
+  { icon: "🎮", title: "Crear juegos", text: "Crea juegos increíbles con el poder de la inteligencia artificial.", color: "#00e5ff", link: "/create" },
+  { icon: "🤖", title: "Compañero de IA", text: "Habla con tu asistente inteligente y creemos aventuras juntos.", color: "#ff00ff", link: "/ai" },
+  { icon: "🌍", title: "Mundos", text: "Explora universos infinitos creados por niños de todo el mundo.", color: "#2979ff", link: "/universo" },
+  { icon: "🧠", title: "Laboratorio de aprendizaje", text: "Aprende creatividad, lógica y programación a través de proyectos interactivos.", color: "#ffe600", link: "/kids" },
+  { icon: "👾", title: "Zona infantil", text: "Experiencias seguras y mágicas diseñadas para jóvenes creadores.", color: "#00ff99", link: "/kids" },
+  { icon: "🚀", title: "Centro de creadores", text: "Comparte juegos, colabora y forma parte del universo de Avyron.", color: "#ff7b00", link: "/create" },
+];
+
+export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white">
+    <main
+      style={{
+        minHeight: "100vh",
+        color: "white",
+        fontFamily: "Arial, sans-serif",
+        overflowX: "hidden",
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)), url('/bg-space.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <nav
+        style={{
+          width: "90%",
+          margin: "22px auto",
+          padding: "12px 22px",
+          borderRadius: "30px",
+          border: "1px solid rgba(255,255,255,.15)",
+          background: "rgba(0,0,0,.55)",
+          backdropFilter: "blur(18px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          boxShadow: "0 0 25px rgba(255,0,255,.18)",
+        }}
+      >
+        <Image
+          src="/logo.png"
+          alt="AVYRON"
+          width={120}
+          height={55}
+          style={{ objectFit: "contain", height: "auto" }}
+        />
 
-      {/* Fondo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-950 via-black to-fuchsia-950" />
+        <div
+          style={{
+            display: "flex",
+            gap: "30px",
+            alignItems: "center",
+            fontWeight: "bold",
+            fontSize: "16px",
+          }}
+        >
+          <span style={{ color: "#00e5ff" }}>Inicio</span>
+          <span>Cursos</span>
+          <span>IA</span>
+          <span>Comunidad</span>
 
-      {/* Glow cyan */}
-      <div className="absolute top-[-250px] left-[-250px] h-[600px] w-[600px] rounded-full bg-cyan-500/20 blur-3xl" />
-
-      {/* Glow purple */}
-      <div className="absolute bottom-[-250px] right-[-250px] h-[600px] w-[600px] rounded-full bg-fuchsia-500/20 blur-3xl" />
-
-      {/* Estrellas */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(70)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              opacity: [0.2, 1, 0.2],
-            }}
-            transition={{
-              duration: Math.random() * 4 + 2,
-              repeat: Infinity,
-            }}
-            className="absolute rounded-full bg-white"
+          <button
             style={{
-              width: `${Math.random() * 4}px`,
-              height: `${Math.random() * 4}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              padding: "10px 24px",
+              borderRadius: "999px",
+              border: "1px solid #ff00ff",
+              background: "transparent",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "15px",
+              cursor: "pointer",
+              boxShadow: "0 0 18px rgba(255,0,255,.4)",
             }}
-          />
-        ))}
-      </div>
-
-      {/* Navbar */}
-      <nav className="relative z-20 flex items-center justify-between border-b border-white/10 px-8 py-6 backdrop-blur-xl">
-
-        <Link href="/">
-
-          <h1 className="bg-gradient-to-r from-cyan-400 via-blue-400 to-fuchsia-500 bg-clip-text text-3xl font-black tracking-[0.3em] text-transparent cursor-pointer">
-            AVYRON
-          </h1>
-
-        </Link>
-
-        <div className="hidden md:flex gap-8 text-sm uppercase tracking-[0.2em] text-zinc-300">
-
-          <button className="hover:text-cyan-400 transition">
-            Games
+          >
+            Ingresar
           </button>
-
-          <button className="hover:text-cyan-400 transition">
-            AI
-          </button>
-
-          <button className="hover:text-cyan-400 transition">
-            Worlds
-          </button>
-
-          <button className="hover:text-cyan-400 transition">
-            Community
-          </button>
-
         </div>
-
       </nav>
 
-      {/* HERO */}
-      <section className="relative z-10 flex flex-col items-center px-6 pt-28 text-center">
+      <section
+        style={{
+          textAlign: "center",
+          width: "90%",
+          margin: "0 auto",
+          paddingTop: "8px",
+        }}
+      >
+        <Image
+          src="/logo.png"
+          alt="AVYRON"
+          width={260}
+          height={120}
+          style={{
+            margin: "0 auto",
+            objectFit: "contain",
+            height: "auto",
+          }}
+        />
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-6xl font-black tracking-[0.2em] text-transparent md:text-8xl"
+        <h1
+          style={{
+            fontSize: "40px",
+            fontWeight: "900",
+            lineHeight: 1.05,
+            marginTop: "18px",
+            background: "linear-gradient(90deg,#ffffff,#00e5ff,#d46cff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
         >
-          THE UNIVERSE
-        </motion.h1>
+          El futuro del
+          <br />
+          aprendizaje interactivo
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 1 }}
-          className="mt-8 max-w-3xl text-lg leading-8 text-zinc-400"
+        <p
+          style={{
+            maxWidth: "660px",
+            margin: "18px auto",
+            fontSize: "16px",
+            lineHeight: 1.5,
+            color: "#f1f5f9",
+          }}
         >
-          Explore worlds powered by imagination, gaming and artificial intelligence.
-        </motion.p>
+          Inteligencia artificial, gamificación y experiencias inmersivas
+          combinadas en una plataforma diseñada para aprender creando.
+        </p>
 
-        {/* GRID */}
-        <div className="mt-24 grid w-full max-w-7xl gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "22px",
+            marginTop: "22px",
+            flexWrap: "wrap",
+          }}
+        >
+       <Link
+  href="/create"
+  style={{
+    display: "inline-block",
+    marginTop: "16px",
+    padding: "10px 24px",
+    borderRadius: "999px",
+    border: "1px solid #00d9ff",
+    background: "transparent",
+    color: "#00d9ff",
+    fontWeight: "bold",
+    fontSize: "15px",
+    cursor: "pointer",
+    boxShadow: "0 0 14px rgba(0,217,255,.4)",
+    textDecoration: "none",
+  }}
+>
+  Ingresar →
+</Link>
 
-          {/* Card */}
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.02,
+          <button
+            style={{
+              padding: "12px 32px",
+              borderRadius: "999px",
+              border: "1px solid #ff00ff",
+              background: "transparent",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "16px",
+              cursor: "pointer",
+              boxShadow: "0 0 18px rgba(255,0,255,.25)",
             }}
-            className="rounded-3xl border border-cyan-500/20 bg-white/5 p-8 backdrop-blur-xl"
           >
-            <div className="mb-6 text-6xl">🎮</div>
-
-            <h2 className="text-3xl font-bold text-cyan-300">
-              Create Games
-            </h2>
-
-            <p className="mt-6 text-zinc-400 leading-7">
-              Build amazing games with the power of artificial intelligence.
-            </p>
-
-            <button className="mt-8 rounded-full bg-cyan-500 px-6 py-3 font-bold text-black transition hover:bg-cyan-400">
-              Enter
-            </button>
-          </motion.div>
-
-          {/* Card */}
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.02,
-            }}
-            className="rounded-3xl border border-fuchsia-500/20 bg-white/5 p-8 backdrop-blur-xl"
-          >
-            <div className="mb-6 text-6xl">🤖</div>
-
-            <h2 className="text-3xl font-bold text-fuchsia-300">
-              AI Companion
-            </h2>
-
-            <p className="mt-6 text-zinc-400 leading-7">
-              Talk with your intelligent assistant and create adventures together.
-            </p>
-
-            <button className="mt-8 rounded-full bg-fuchsia-500 px-6 py-3 font-bold text-white transition hover:bg-fuchsia-400">
-              Enter
-            </button>
-          </motion.div>
-
-          {/* Card */}
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.02,
-            }}
-            className="rounded-3xl border border-blue-500/20 bg-white/5 p-8 backdrop-blur-xl"
-          >
-            <div className="mb-6 text-6xl">🌎</div>
-
-            <h2 className="text-3xl font-bold text-blue-300">
-              Worlds
-            </h2>
-
-            <p className="mt-6 text-zinc-400 leading-7">
-              Explore infinite universes created by kids around the world.
-            </p>
-
-            <button className="mt-8 rounded-full bg-blue-500 px-6 py-3 font-bold text-white transition hover:bg-blue-400">
-              Enter
-            </button>
-          </motion.div>
-
-          {/* Card */}
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.02,
-            }}
-            className="rounded-3xl border border-yellow-500/20 bg-white/5 p-8 backdrop-blur-xl"
-          >
-            <div className="mb-6 text-6xl">🧠</div>
-
-            <h2 className="text-3xl font-bold text-yellow-300">
-              Learn Lab
-            </h2>
-
-            <p className="mt-6 text-zinc-400 leading-7">
-              Learn creativity, logic and coding through interactive experiences.
-            </p>
-
-            <button className="mt-8 rounded-full bg-yellow-400 px-6 py-3 font-bold text-black transition hover:bg-yellow-300">
-              Enter
-            </button>
-          </motion.div>
-
-          {/* Card */}
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.02,
-            }}
-            className="rounded-3xl border border-green-500/20 bg-white/5 p-8 backdrop-blur-xl"
-          >
-            <div className="mb-6 text-6xl">👾</div>
-
-            <h2 className="text-3xl font-bold text-green-300">
-              Kids Zone
-            </h2>
-
-            <p className="mt-6 text-zinc-400 leading-7">
-              Safe and magical experiences designed for younger creators.
-            </p>
-
-            <button className="mt-8 rounded-full bg-green-500 px-6 py-3 font-bold text-black transition hover:bg-green-400">
-              Enter
-            </button>
-          </motion.div>
-
-          {/* Card */}
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.02,
-            }}
-            className="rounded-3xl border border-orange-500/20 bg-white/5 p-8 backdrop-blur-xl"
-          >
-            <div className="mb-6 text-6xl">🚀</div>
-
-            <h2 className="text-3xl font-bold text-orange-300">
-              Creator Hub
-            </h2>
-
-            <p className="mt-6 text-zinc-400 leading-7">
-              Share games, collaborate and become part of the Avyron universe.
-            </p>
-
-            <button className="mt-8 rounded-full bg-orange-500 px-6 py-3 font-bold text-black transition hover:bg-orange-400">
-              Enter
-            </button>
-          </motion.div>
-
+            Ver demo ▷
+          </button>
         </div>
-
       </section>
 
+      <section
+        style={{
+          width: "90%",
+          margin: "42px auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+          gap: "24px",
+        }}
+      >
+        {cards.map((card) => (
+          <div
+            key={card.title}
+            style={{
+              minHeight: "220px",
+              background: "rgba(0,0,0,.68)",
+              border: `1px solid ${card.color}`,
+              borderRadius: "24px",
+              padding: "20px 18px",
+              textAlign: "center",
+              backdropFilter: "blur(10px)",
+              boxShadow: `0 0 25px ${card.color}33`,
+            }}
+          >
+            <div style={{ fontSize: "38px" }}>{card.icon}</div>
+
+            <h2
+              style={{
+                fontSize: "1.5rem",
+                marginTop: "12px",
+                color: card.color,
+                fontWeight: "900",
+                lineHeight: 1.1,
+              }}
+            >
+              {card.title}
+            </h2>
+
+            <p
+              style={{
+                marginTop: "12px",
+                fontSize: "15px",
+                lineHeight: 1.45,
+                color: "#f8fafc",
+              }}
+            >
+              {card.text}
+            </p>
+
+            <button
+              style={{
+                marginTop: "16px",
+                padding: "10px 24px",
+                borderRadius: "999px",
+                border: `1px solid ${card.color}`,
+                background: "transparent",
+                color: card.color,
+                fontWeight: "bold",
+                fontSize: "15px",
+                cursor: "pointer",
+                boxShadow: `0 0 14px ${card.color}44`,
+              }}
+            >
+              Ingresar →
+            </button>
+          </div>
+        ))}
+      </section>
     </main>
   );
 }

@@ -1,44 +1,28 @@
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export async function POST(req: Request) {
-
   try {
+    const { prompt } = await req.json();
 
-    const body = await req.json();
+    if (!prompt) {
+      return Response.json(
+        { error: "Falta el prompt." },
+        { status: 400 }
+      );
+    }
 
-    const prompt = body.prompt;
+    const game = {
+      title: `Aventura: ${prompt}`,
+      concept:
+        "Un juego interactivo creado por Avyron donde el jugador aprende creando, explorando y resolviendo desafíos.",
+      image: null,
+    };
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4.1-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are an AI game creator for children. Create imaginative game ideas with characters, gameplay, powers, enemies and worlds.",
-        },
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-    });
-
-    const result = completion.choices[0].message.content;
-
-    return Response.json({
-      result,
-    });
-
+    return Response.json(game);
   } catch (error) {
+    console.error("API ERROR:", error);
 
-    return Response.json({
-      result: "Something went wrong.",
-    });
-
+    return Response.json(
+      { error: "No se pudo generar el juego." },
+      { status: 500 }
+    );
   }
-
 }
